@@ -32,7 +32,7 @@ AddEvent("OnPlayerJoin", function(player)
 end)
 
 AddRemoteEvent("aircraftdealerInteract", function(player, aircraftdealerobject)
-    local aircraftdealer = GetCarDealearByObject(aircraftdealerobject)
+    local aircraftdealer = GetaircraftDealearByObject(aircraftdealerobject)
 	if aircraftdealer then
 		local x, y, z = GetNPCLocation(aircraftdealer.npc)
 		local x2, y2, z2 = GetPlayerLocation(player)
@@ -49,7 +49,7 @@ AddRemoteEvent("aircraftdealerInteract", function(player, aircraftdealerobject)
 	end
 end)
 
-function GetCarDealearByObject(aircraftdealerobject)
+function GetaircraftDealearByObject(aircraftdealerobject)
 	for k,v in pairs(aircraftdealerTable) do
 		if v.npc == aircraftdealerobject then
 			return v
@@ -73,14 +73,14 @@ function onVehicleCreateDatabase(vehicle)
     VehicleData[vehicle].garageid = mariadb_get_insert_id()
 end
 
-function buyCarServer(player, modelid, color, aircraftdealerobject)
+function buyaircraftServer(player, modelid, color, aircraftdealerobject)
 	local name = _(modelid)
 	local price = getVehiclePrice(modelid, aircraftdealerobject)
 	local color = getVehicleColor(color, aircraftdealerobject)
 	local modelid = getVehicleId(modelid)
 
 	if tonumber(price) > GetPlayerCash(player) then
-        CallRemoteEvent(player, "MakeNotification",_("no_money_car"), "linear-gradient(to right, #ff5f6d, #ffc371)")
+        CallRemoteEvent(player, "MakeNotification",_("no_money_aircraft"), "linear-gradient(to right, #ff5f6d, #ffc371)")
     else
         local x, y, z = GetPlayerLocation(player)
 
@@ -106,7 +106,7 @@ function buyCarServer(player, modelid, color, aircraftdealerobject)
                     CreateVehicleDatabase(player, vehicle, modelid, color, price)
                     RemovePlayerCash(player, price)
                     CallRemoteEvent(player, "closeaircraftdealer")
-                    return CallRemoteEvent(player, "MakeNotification", _("car_buy_sucess", name, price, _("currency")), "linear-gradient(to right, #00b09b, #96c93d)")
+                    return CallRemoteEvent(player, "MakeNotification", _("aircraft_buy_sucess", name, price, _("currency")), "linear-gradient(to right, #00b09b, #96c93d)")
                 else
                     return CallRemoteEvent(player, "MakeNotification", _("cannot_spawn_vehicle"), "linear-gradient(to right, #ff5f6d, #ffc371)")
                 end
@@ -114,4 +114,4 @@ function buyCarServer(player, modelid, color, aircraftdealerobject)
         end
     end
 end
-AddRemoteEvent("buyCarServer", buyCarServer)
+AddRemoteEvent("buyaircraftServer", buyaircraftServer)

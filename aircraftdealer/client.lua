@@ -5,10 +5,10 @@ local aircraftdealer
 local isaircraftdealer
 local StreamedaircraftdealerIds = { }
 local aircraftdealerIds = { }
-local carRetrieved
+local aircraftRetrieved
 
 AddEvent("OnTranslationReady", function()
-	aircraftdealer = Dialog.create(_("car_dealer"), nil, _("buy"), _("cancel"))
+	aircraftdealer = Dialog.create(_("aircraft_dealer"), nil, _("buy"), _("cancel"))
 	Dialog.addSelect(aircraftdealer, 1, _("vehicle_list"), 10)
 	Dialog.addSelect(aircraftdealer, 2, _("color"), 10)
 end)
@@ -29,9 +29,9 @@ AddEvent("OnDialogSubmit", function(dialog, button, ...)
 		local args = { ... }
 		if button == 1 then
 			if args[1] == "" or args[2] == "" then
-				MakeNotification(_("select_car_to_buy"), "linear-gradient(to right, #ff5f6d, #ffc371)")
+				MakeNotification(_("select_aircraft_to_buy"), "linear-gradient(to right, #ff5f6d, #ffc371)")
 			else
-				CallRemoteEvent("buyCarServer", args[1], args[2], Nearestaircraftdealer)
+				CallRemoteEvent("buyaircraftServer", args[1], args[2], Nearestaircraftdealer)
 			end
         end
     end
@@ -69,15 +69,15 @@ function tablefind(tab, el)
 end
 
 function openaircraftdealer(lvehicles, lcolors)
-	local cars = {}
+	local aircrafts = {}
 	for k,v in pairs(lvehicles) do
-		cars[k] = _(k).." ["..v.._("currency").."]"
+		aircrafts[k] = _(k).." ["..v.._("currency").."]"
 	end
 	local colors = {}
 	for k,v in pairs(lcolors) do
 		colors[k] = _(k)
 	end
-	Dialog.setSelectLabeledOptions(aircraftdealer, 1, 1, cars)
+	Dialog.setSelectLabeledOptions(aircraftdealer, 1, 1, aircrafts)
 	Dialog.setSelectLabeledOptions(aircraftdealer, 2, 1, colors)
 	Dialog.show(aircraftdealer)
 end
