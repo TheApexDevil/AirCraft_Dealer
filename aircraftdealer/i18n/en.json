@@ -1,0 +1,7 @@
+{
+  "aircraft_dealer": "Aircraft Dealer",
+  "press_e": "Press E to interact",
+  "cannot_spawn_vehicle": "Cannot spawn your vehicle !",
+  "aircraft_buy_sucess": "You successfully bought a {1} for {2} {3}",
+  "no_money_aircraft": "You don't have the money to buy this car !"
+}
