@@ -8,5 +8,7 @@ Then a this "aircraftdealer" to youre server_config.json make sure to place it a
 
 keep in mind its still a WIP Build
 
+# YOU CAN FIND THE DEALER AT THE GREEN HELIDECK ON THE MAIN AIRFIELD
+
 # NO AIRCRAFT GARAGE AND SPAWNS YET
  
