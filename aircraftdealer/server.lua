@@ -1,5 +1,3 @@
-local _ = function(k,...) return ImportPackage("i18n").t(GetPackageName(),k,...) end
-
 aircraftdealerObjectsCached = { }
 aircraftdealerTable = {
 {
@@ -14,7 +12,7 @@ aircraftdealerTable = {
 			green = "00FF00"
 
 		},
-		location = { 146692.203125, -135356.8125, 1249.2750244141 },
+		location = { 146692.203125, -135356.8125, 1249.2750244141, -130.7338104248 },
 		spawn = { 144858.390625, -135687.5625, 1254.0810546875 }
     },
 }
